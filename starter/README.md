@@ -1,3 +1,0 @@
-# Purpose of this Folder
-
-
