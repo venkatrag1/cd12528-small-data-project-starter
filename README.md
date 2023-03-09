@@ -30,16 +30,6 @@ Numpy 1.24.1
 sklearn 1.2.1
 ```
 
-### Installation
-
-Step by step explanation of how to get a dev environment running.
-
-***VAL, I'm not sure about the VS Code environment in the classroom***
-
-```
-Give an example here
-```
-
 ## Testing
 
 **Part 1: Travel Planner Problem**
