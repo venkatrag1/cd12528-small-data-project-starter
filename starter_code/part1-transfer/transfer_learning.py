@@ -11,6 +11,7 @@ from torchvision import datasets, transforms
 from TrainModel import train_model
 from TestModel import test_model
 from torchvision import models
+from pathlib import Path
 
 
 # use this mean and sd from torchvision transform documentation
@@ -20,8 +21,23 @@ std = [0.229, 0.224, 0.225]
 #Set up Transforms (train, val, and test)
 
 #<<<YOUR CODE HERE>>>
+train_transfroms = transforms.Compose(
+    [
+        transforms.RandomResizedCrop(224, antialias=True),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize(mean, std)
+    ]
+)
 
-
+testval_transforms = transforms.Compose(
+    [
+        transforms.Resize(256, antialias=True),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean, std)
+    ]
+)
 
 
 #Set up DataLoaders (train, val, and test)
@@ -31,7 +47,9 @@ num_workers = 4
 #<<<YOUR CODE HERE>>>
 
 #hint, create a variable that contains the class_names. You can get them from the ImageFolder
-
+class_names = Path("./imagedata-50/train").glob("*/")
+class_names = [Path(n).name for n in class_names]
+class_names.sort()
 
 
 # Using the VGG16 model for transfer learning 
